@@ -15,13 +15,28 @@ def generate_compra():
         +str(random.randint(1000,3500000))+','
         +fake.domain_name()+','
         +random.choice(states)+','
-        +fake.date())
+        +fake.date()+";")
+    return ret
+
+def generate_productos_compra():
+    ret = []
+    for i in range(NUM_ENTRIES):
+        ret.append("INSERT INTO PRODUCTOS_COMPRA (ID_COMPRA,ID_PRODUCTO,CANT_UNIDADES_COMPRADAS) VALUES ("
+        + str(random.randint(1, NUM_ENTRIES-1)) + ","+ fake.aba() + "," +str(random.randint(1,20))+");")
+    return ret
+
+def generate_pedido():
+    ret = []
+    for i in range(NUM_ENTRIES):
+        ret.append()
+
     return ret
 
 def main():
     print("Processing your mock data...")    
     compras = generate_compra()
-    print(compras)
+    productos = generate_productos_compra()
+    
     print("Done! Enjoy.")
 
 if __name__ == "__main__":
